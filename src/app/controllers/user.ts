@@ -1,0 +1,161 @@
+/**
+ * 
+ * @Name            UserController
+ * @Description     Lógica para el manejo de rutas de usuarios
+ * 
+ */
+import { Request, Response } from "express";
+import { Usuario } from "../models/usuario";
+import bcrypt from 'bcrypt';
+import Token from "../providers/token";
+
+export default class UserController {
+
+   constructor() {}
+   /**
+    * @name Login
+    * 
+    * @param Object req
+    * @param Object res
+    * 
+    * @return Token user
+    * 
+    */
+   login = ( req: Request, res: Response) => {
+
+      const body = req.body;
+   
+      Usuario.findOne( { email: body.email }, ( err, userDB ) => {
+   
+         if( err ) throw err;
+   
+         if(!userDB) {
+            return res.json({
+               ok: false,
+               mensaje: 'Usuario/Contraseña no son correctos'
+            });
+         }
+   
+         if(userDB.compararPassword( body.password )){
+   
+            const tokenUser = Token.getJwtToken({
+               _id: userDB._id,
+               nombre: userDB.nombre,
+               email: userDB.email,
+               avatar: userDB.avatar
+            });
+
+            res.json({
+               ok: true,
+               token: tokenUser
+            });
+   
+         }else{
+            return res.json({
+               ok: false,
+               mensaje: 'Usuario/Contraseña no son correctos ***'
+            });
+         }  
+      });
+   }
+   /**
+    * @name newUser
+    * 
+    * @param Object req
+    * @param Object res
+    * 
+    * @return Token user
+    * 
+    */
+   public newUser = ( req: Request, res: Response ) => {
+
+      const user = {
+         nombre: req.body.nombre,
+         email: req.body.email,
+         password: bcrypt.hashSync( req.body.password, 10 ),  
+         avatar: req.body.avatar
+      }
+   
+      Usuario.create( user).then( userDB => {
+   
+         const tokenUser = Token.getJwtToken({
+            _id: userDB._id,
+            nombre: userDB.nombre,
+            email: userDB.email,
+            avatar: userDB.avatar
+         });
+   
+         res.json({
+            ok: true,
+            mensaje: 'Peticion recibida correctamente',
+            token: tokenUser
+         });
+         
+      }).catch( err => {
+         res.json({
+            ok: false,
+            err
+         })
+      });
+   
+   }
+   /**
+    * @name updateToken
+    * 
+    * @param Object req
+    * @param Object res
+    * 
+    * @return Token update when change user data
+    * 
+    */
+   updateToken = (req: any, res: Response) => {
+
+      const user = {
+         nombre: req.body.nombre || req.usuario.nombre,
+         email: req.body.email || req.usuario.email,
+         avatar: req.body.avatar || req.usuario.avatar
+      }
+   
+      Usuario.findByIdAndUpdate( req.usuario._id, user, { new: true }, (err, userDB: any) => {
+   
+         if(err) throw err;
+   
+         if( !userDB){
+            res.json({
+               ok: false,
+               mensaje: 'No existe un usuario con ese ID'
+            });
+         }
+   
+         const tokenUser = Token.getJwtToken({
+            _id: userDB._id,
+            nombre: userDB.nombre,
+            email: userDB.email,
+            avatar: userDB.avatar
+         });
+   
+         res.json({
+            ok: true,
+            mensaje: 'Peticion recibida correctamente',
+            token: tokenUser
+         }); 
+      });
+   }
+   /**
+    * @name getUserToken
+    * 
+    * @param Object req
+    * @param Object res
+    * 
+    * @return Decrypt token and return user
+    */
+   getUserToken = (req: any, res: Response ) =>{
+
+      const usuario  = req.usuario;
+   
+      res.json({
+         ok: true,
+         usuario
+      });
+   }
+}

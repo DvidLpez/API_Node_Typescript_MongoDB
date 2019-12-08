@@ -1,0 +1,47 @@
+NODE SERVER CONFIGURATION
+
+1 - npm init / genera el package.json
+2 - creamos un index.ts
+3 - tsc --init / genera el archivo de configuración de ts
+    ** descomentar -outdir a 'dist/'
+    ** cambiar a compilación en es6
+4 - tsc -w / entra en modo observador
+5 - npm install -g nodemon / nodemon dist / visulalizamos en terminal los console log
+6 - paquetes necesarios para el back en nodemon
+    ** npm install express - crea un server web res
+    ** npm install body-parser - recibe la info de post transforma en js
+    ** npm install cors - peticiones cors
+    ** npm install mongoose - interaciones con bbdd
+    ** npm install express-fileupload - poder subir imagenes
+    ** npm install jsonwebtoken - jwt users
+    ** npm install bcrypt - encryptar contraseñas
+
+    ** npm install express body-parser cors mongoose express-fileupload jsonwebtoken bcrypt
+
+7 - npm install @types/express --save-dev  / tipado para ts ayuda
+8 - npm install @types/mongoose --save-dev / tipado para ts ayuda
+
+9 - Creamos una carpeta llamada models / clave para el modelo de datos
+
+10 - npm install @types/bcrypt --save-dev / tipado para ts ayuda
+
+11 - npm install @types/jsonwebtoken --save-dev / tipado de jwt
+
+12 - npm install @types/express-fileupload --save-dev  / subida de ficheros
+
+13 - npm install uniqid
+
+14 - npm install @types/uniqid --save-dev
+
+15 - npm install @types/cors --save-dev
+
+
+
+
+
+
+LEER CAMBIOS EN LA APLICACIÓN Y RECOMPILAR
+   tsc -w
+ARRANCAR APP
+   nodemon dist
+
