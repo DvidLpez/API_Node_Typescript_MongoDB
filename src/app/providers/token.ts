@@ -7,7 +7,7 @@ export default class Token {
     private static seed: string = 'Seed-del-token-secreto';
     private static caducidad: string = '1d';
 
-    constructor() { }
+    constructor() {}
 
     static getJwtToken ( payload: any) : string {
         return jwt.sign({

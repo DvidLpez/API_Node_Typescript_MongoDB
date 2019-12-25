@@ -7,7 +7,7 @@ export default class MongoDB {
 
    constructor(){
       const _ = config;
-      this.url = `${_.database.protocol}${_.database.host}:${_.database.port}/${_.database.bbdd}`;
+      this.url = `${_.database.protocol}${_.database.host}:${_.database.port}/${_.database.db}`;
    }
 
    connect() {
