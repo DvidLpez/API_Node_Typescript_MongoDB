@@ -1,7 +1,7 @@
 import { IRoutes } from '../core/interfaces/iRoutes';
 import postRoutes from './post';
 import userRoutes from './usuario';
-import swaggerRoutes from './swagger';
+import swaggerRoutes from './swagger/swagger';
 
 const Routes:Array<IRoutes> = 
 [
