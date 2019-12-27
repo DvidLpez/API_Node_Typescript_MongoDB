@@ -4,7 +4,7 @@
  */
 
 import { Schema, model } from "mongoose";
-import { IPost } from '../../core/interfaces/iPost';
+import { IPost } from '@src/interfaces/iPost';
 
 const postSchema = new Schema({
    created: {

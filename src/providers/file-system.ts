@@ -1,4 +1,4 @@
-import { FileUpload } from "../../core/interfaces/file-upload";
+import { FileUpload } from "@src/interfaces/file-upload";
 import path from 'path';
 import fs from 'fs';
 import uniqid from 'uniqid';

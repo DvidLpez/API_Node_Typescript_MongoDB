@@ -5,7 +5,7 @@
 
 import { Schema, model } from 'mongoose';
 import bcrypt from 'bcrypt';
-import { IUsuario } from '../../core/interfaces/iUsuario';
+import { IUsuario } from '@src/interfaces/iUsuario';
 
 const usuarioSchema = new Schema({
 

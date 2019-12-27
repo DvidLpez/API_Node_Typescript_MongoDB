@@ -5,9 +5,9 @@
  * 
  */
 import { Request, Response } from "express";
-import { Usuario } from "../models/usuario";
 import bcrypt from 'bcrypt';
-import Token from "@app/providers/token";
+import { Usuario } from "@src/models/usuario";
+import Token from "@src/providers/token";
 
 export default class UserController {
 

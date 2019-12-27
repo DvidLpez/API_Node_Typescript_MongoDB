@@ -2,8 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
-import { IRoutes } from '../../core/interfaces/iRoutes';
-import config from '../../config/config';
+import { IRoutes } from '@src/interfaces/iRoutes';
+import config from '@src/config/config';
 
 export default class Server {
 

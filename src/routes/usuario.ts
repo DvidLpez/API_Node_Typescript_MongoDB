@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { AUTH_TOKEN } from "../app/middleware/auth";
-import UserController from '../app/controllers/user';
+import { AUTH_TOKEN } from "@src/middleware/auth";
+import UserController from "@src/controllers/user";
 
 let userRoutes = Router();
 let userCtrl = new UserController;

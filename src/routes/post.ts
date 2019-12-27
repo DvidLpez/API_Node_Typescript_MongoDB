@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { AUTH_TOKEN } from "../app/middleware/auth";
-import PostController from '../app/controllers/post';
+import { AUTH_TOKEN } from "@src/middleware/auth";
+import PostController from '@src/controllers/post';
 
 let postRoutes = Router();
 let postCtrl = new PostController();

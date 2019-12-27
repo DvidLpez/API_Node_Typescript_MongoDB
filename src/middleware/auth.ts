@@ -8,7 +8,7 @@
  */
 
 import { Response, NextFunction } from 'express';
-import Token from '../providers/token';
+import Token from '@src/providers/token';
 
 export const AUTH_TOKEN = (req: any, res: Response, next: NextFunction) => {
 

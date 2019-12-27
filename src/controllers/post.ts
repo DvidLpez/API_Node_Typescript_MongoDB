@@ -5,9 +5,9 @@
  * 
  */
 import { Response } from "express";
-import { Post } from "../models/post";
-import FileSystem from "../providers/file-system";
-import { FileUpload } from "../../core/interfaces/file-upload";
+import { Post } from "@src/models/post";
+import FileSystem from "@src/providers/file-system";
+import { FileUpload } from "@src/interfaces/file-upload";
 
 const fileSystem = new FileSystem();
  

@@ -1,4 +1,4 @@
-import config from '../../config/config';
+import config from '@src/config/config';
 import mongoose from 'mongoose';
 
 export default class MongoDB {

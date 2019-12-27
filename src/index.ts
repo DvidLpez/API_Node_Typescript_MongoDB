@@ -1,7 +1,8 @@
 import 'module-alias/register';
-import MongoDB from '@app/providers/mongodb';
-import Server from '@app/providers/server';
-import Routes from './routes/index';
+
+import MongoDB from '@src/providers/mongodb';
+import Server from '@src/providers/server';
+import Routes from '@src/routes/index';
 
 const mongodb = new MongoDB;
 const express = new Server; 

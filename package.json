@@ -10,7 +10,7 @@
   "author": "David López Blasco",
   "license": "ISC",
   "_moduleAliases": {
-    "@app": "dist/app"
+    "@src": "dist/"
   },
   "dependencies": {
     "@types/lodash": "^4.14.149",
