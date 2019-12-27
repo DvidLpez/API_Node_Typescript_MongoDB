@@ -18,6 +18,8 @@ export default class Server {
 
     public bodyParseApplication(extended: boolean) {
       this.app.use( bodyParser.urlencoded({ extended }));
+      this.app.use(bodyParser.json());
+      this.app.use(bodyParser.raw());
     }
 
     public corsApplication (origin:boolean, credentials:boolean) {

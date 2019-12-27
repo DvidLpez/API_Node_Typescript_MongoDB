@@ -7,7 +7,7 @@
 import { Request, Response } from "express";
 import { Usuario } from "../models/usuario";
 import bcrypt from 'bcrypt';
-import Token from "../providers/token";
+import Token from "@app/providers/token";
 
 export default class UserController {
 
@@ -46,13 +46,14 @@ export default class UserController {
             });
 
             res.json({
-               ok: true,
+               status: true,
+               mensaje: "Usuario logado correctamente",
                token: tokenUser
             });
    
          }else{
             return res.json({
-               ok: false,
+               status: false,
                mensaje: 'Usuario/Contraseña no son correctos ***'
             });
          }  
@@ -67,9 +68,9 @@ export default class UserController {
     * @return Token user
     * 
     */
-   public newUser = ( req: Request, res: Response ) => {
+   public newUser = ( req: any, res: Response ) => {
 
-      const user = {
+      const user = { 
          nombre: req.body.nombre,
          email: req.body.email,
          password: bcrypt.hashSync( req.body.password, 10 ),  
@@ -85,19 +86,18 @@ export default class UserController {
             avatar: userDB.avatar
          });
    
-         res.json({
-            ok: true,
-            mensaje: 'Peticion recibida correctamente',
+         res.status(201).json({
+            status: true,
+            mensaje: 'Usuario creado correctamente',
             token: tokenUser
          });
          
       }).catch( err => {
-         res.json({
-            ok: false,
+         res.status(400).json({
+            status: false,
             err
          })
       });
-   
    }
    /**
     * @name updateToken
@@ -121,8 +121,8 @@ export default class UserController {
          if(err) throw err;
    
          if( !userDB){
-            res.json({
-               ok: false,
+            res.status(204).json({
+               status: false,
                mensaje: 'No existe un usuario con ese ID'
             });
          }
@@ -134,9 +134,9 @@ export default class UserController {
             avatar: userDB.avatar
          });
    
-         res.json({
-            ok: true,
-            mensaje: 'Peticion recibida correctamente',
+         res.status(200).json({
+            status: true,
+            mensaje: 'Usuario actualizado',
             token: tokenUser
          }); 
       });
@@ -153,8 +153,8 @@ export default class UserController {
 
       const usuario  = req.usuario;
    
-      res.json({
-         ok: true,
+      res.status(200).json({
+         status: true,
          usuario
       });
    }

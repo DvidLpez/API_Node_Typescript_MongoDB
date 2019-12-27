@@ -3,14 +3,13 @@ import postRoutes from './post';
 import userRoutes from './usuario';
 import swaggerRoutes from './swagger/swagger';
 
+let version = '/v1';
+
 const Routes:Array<IRoutes> = 
 [
-   { 
-      url: '/swagger', 
-      module: swaggerRoutes 
-   },
-   { url: '/posts', module: postRoutes },
-   { url: '/user', module: userRoutes }
+   {  url: `${version}/swagger`, module: swaggerRoutes },
+   {  url: `${version}/posts`, module: postRoutes },
+   {  url: `${version}/user`, module: userRoutes }
 ];
 
 export default Routes;

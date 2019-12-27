@@ -22,8 +22,8 @@ export const AUTH_TOKEN = (req: any, res: Response, next: NextFunction) => {
          next();
       })
       .catch(err => {
-         res.json({
-            ok: false,
+         res.status(401).json({
+            status: false,
             mensaje: 'El token no es valido'
          })
       })

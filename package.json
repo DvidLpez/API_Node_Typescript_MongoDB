@@ -9,6 +9,9 @@
   },
   "author": "David López Blasco",
   "license": "ISC",
+  "_moduleAliases": {
+    "@app": "dist/app"
+  },
   "dependencies": {
     "@types/lodash": "^4.14.149",
     "@types/swagger-jsdoc": "^3.0.2",
@@ -20,6 +23,7 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.1.5",
     "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
     "mongoose": "^5.6.0",
     "swagger-ui-express": "^4.1.2",
     "uniqid": "^5.0.3"

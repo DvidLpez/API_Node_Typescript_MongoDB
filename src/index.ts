@@ -1,5 +1,6 @@
-import MongoDB from './app/providers/mongodb';
-import Server from "./app/providers/server";
+import 'module-alias/register';
+import MongoDB from '@app/providers/mongodb';
+import Server from '@app/providers/server';
 import Routes from './routes/index';
 
 const mongodb = new MongoDB;
