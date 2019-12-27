@@ -1,7 +1,7 @@
 import { IRoutes } from '@src/interfaces/iRoutes';
 import postRoutes from './post';
 import userRoutes from './usuario';
-import swaggerRoutes from './swagger/swagger';
+import swaggerRoutes from './swagger';
 
 let version = '/v1';
 

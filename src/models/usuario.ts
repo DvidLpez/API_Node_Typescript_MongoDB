@@ -2,13 +2,11 @@
  * @name            usuarioSchema
  * @description     Modelo de datos para un objeto usuario
  */
-
 import { Schema, model } from 'mongoose';
 import bcrypt from 'bcrypt';
 import { IUsuario } from '@src/interfaces/iUsuario';
 
 const usuarioSchema = new Schema({
-
    nombre: {
       type: String,
       required: [true, 'El nombre es necesario']
@@ -29,7 +27,6 @@ const usuarioSchema = new Schema({
    }
 });
 
-
 usuarioSchema.method('compararPassword', function (password: string = ''): boolean {
 
    if (bcrypt.compareSync(password, this.password)) {
@@ -40,7 +37,3 @@ usuarioSchema.method('compararPassword', function (password: string = ''): boole
 });
 
 export const Usuario = model<IUsuario>('Usuario', usuarioSchema);
-
-
-
-

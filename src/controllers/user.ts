@@ -1,8 +1,6 @@
 /**
- * 
  * @Name            UserController
  * @Description     Lógica para el manejo de rutas de usuarios
- * 
  */
 import { Request, Response } from "express";
 import bcrypt from 'bcrypt';
@@ -14,30 +12,22 @@ export default class UserController {
    constructor() {}
    /**
     * @name Login
-    * 
     * @param Object req
     * @param Object res
-    * 
-    * @return Token user
-    * 
+    * @return Token user 
     */
    login = ( req: Request, res: Response) => {
 
       const body = req.body;
-   
       Usuario.findOne( { email: body.email }, ( err, userDB ) => {
-   
          if( err ) throw err;
-   
          if(!userDB) {
             return res.json({
                ok: false,
                mensaje: 'Usuario/Contraseña no son correctos'
             });
          }
-   
          if(userDB.compararPassword( body.password )){
-   
             const tokenUser = Token.getJwtToken({
                _id: userDB._id,
                nombre: userDB.nombre,
@@ -61,12 +51,9 @@ export default class UserController {
    }
    /**
     * @name newUser
-    * 
     * @param Object req
     * @param Object res
-    * 
     * @return Token user
-    * 
     */
    public newUser = ( req: any, res: Response ) => {
 
