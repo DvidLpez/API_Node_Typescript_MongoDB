@@ -6,7 +6,7 @@ let postRoutes = Router();
 let postCtrl = new PostController();
 
 // Obtener post paginados
-postRoutes.get('/', [ AUTH_TOKEN ], postCtrl.getPostPaginate );
+postRoutes.get('/', postCtrl.getPostPaginate );
 // Crear nuevo post
 postRoutes.post('/', [ AUTH_TOKEN ], postCtrl.createPost);
 // Servicio para subir archivo en un nuevo post
