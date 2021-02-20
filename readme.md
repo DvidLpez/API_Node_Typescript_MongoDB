@@ -1,4 +1,4 @@
-# NODE - TYPESCRIPT - GRAPHQL
+# NODE & TYPESCRIPT
 
 API project with express and endpoint graphql, coding with typescript
 
